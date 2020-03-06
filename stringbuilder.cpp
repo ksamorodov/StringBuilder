@@ -9,6 +9,7 @@ StringBuilder::StringBuilder()
 }
 
 StringBuilder::StringBuilder(const char* newStr) {
+
     length = 0;
 
     while (newStr[length++]);
@@ -31,11 +32,7 @@ StringBuilder::StringBuilder(const StringBuilder &newStr) {
 
 StringBuilder StringBuilder::concatWith(StringBuilder secondStr) {
 
-    //cout << &string << "\n";
-
-
     int newLength = secondStr.getLength() + length;
-
     char* newString = new char[newLength];
 
     for (int i = 0; i < getLength(); i++) {
@@ -47,12 +44,7 @@ StringBuilder StringBuilder::concatWith(StringBuilder secondStr) {
         newString[i] = secondStr.charAt(i - getLength());
     }
 
-
     StringBuilder conStr(newString);
-    cout << "\n" << this;
-    cout << "\n" << &conStr;
-
-
 
     return conStr;
 }
@@ -64,7 +56,6 @@ char* StringBuilder::getString() {
 int StringBuilder::getLength() {
     return length - 1;
 }
-
 
 char StringBuilder::charAt(int index) {
     return string[index];
