@@ -3,18 +3,13 @@
 
 using namespace std;
 
-StringBuilder::StringBuilder()
-{
-    length = 0;
-}
-
 StringBuilder::StringBuilder(const char* newStr) {
 
     length = 0;
 
     while (newStr[length++]);
 
-    string = new char[length];
+    string = new char[length]; // утечка памяти
 
     for (int i = 0; i < length; i++) {
         string[i] = newStr[i];
@@ -35,19 +30,24 @@ StringBuilder StringBuilder::concatWith(StringBuilder secondStr) {
     int newLength = secondStr.getLength() + length;
     char* newString = new char[newLength];
 
-    for (int i = 0; i < getLength(); i++) {
-        newString[i] = charAt(i);
+    for (int i = 0; i < secondStr.getLength() + length; i++) {
+        if (i < getLength())
+            newString[i] = charAt(i);
+        else
+            newString[i] = secondStr.charAt(i - getLength());
     }
 
+    StringBuilder copyStr(newString);
+    delete[] newString;
 
-    for (int i = getLength(); i < secondStr.getLength() + length; i++) {
-        newString[i] = secondStr.charAt(i - getLength());
-    }
 
-    StringBuilder conStr(newString);
-
-    return conStr;
+    return copyStr;
 }
+
+StringBuilder::~StringBuilder() {
+    delete[] string;
+}
+
 
 char* StringBuilder::getString() {
     return string;
@@ -64,3 +64,6 @@ char StringBuilder::charAt(int index) {
 void StringBuilder::printStr() {
     cout << string;
 }
+
+
+

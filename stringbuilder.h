@@ -1,9 +1,8 @@
-class StringBuilder
-{
+class StringBuilder {
 public:
-    StringBuilder();
     StringBuilder(const char* newStr);
     StringBuilder(const StringBuilder &newStr);
+    ~StringBuilder();
 
     StringBuilder concatWith(StringBuilder newStr);
     int getLength();
@@ -12,6 +11,8 @@ public:
     void setString(const char* str);
     void printStr();
     char* getString();
+
+    char** trim (char splitSymbol);//**//
 
 private:
     char* string;
