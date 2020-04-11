@@ -69,7 +69,7 @@ StringBuilder::StringBuilder(const StringBuilder &newStr) {
 }
 
 StringBuilder StringBuilder::concatWith(StringBuilder secondStr) {
-    
+
     int newLength = secondStr.getLength() + length;
     char* newString = new char[newLength];
 
@@ -91,12 +91,15 @@ char StringBuilder::operator[] (int index) {
     return this->charAt(index);
 }
 
-void StringBuilder::operator= (StringBuilder newStr) {
+StringBuilder& StringBuilder::operator= (StringBuilder newStr) {
     setString(newStr);
+    return *this;
 }
 
-void StringBuilder::operator+= (StringBuilder secondStr) {
+StringBuilder& StringBuilder::operator+= (StringBuilder secondStr) {
     *this = (*this).concatWith(secondStr);
+
+    return *this;
 }
 
 void StringBuilder::setString(StringBuilder newStr){
@@ -109,10 +112,12 @@ void StringBuilder::setString(StringBuilder newStr){
 
     length = newStr.getLength();
     string[length] = '\0';
+
 }
 
-void StringBuilder::operator= (std::string newStr){
+StringBuilder& StringBuilder::operator= (std::string newStr){
     setString(newStr);
+    return *this;
 }
 
 void StringBuilder::setString(std::string newStr) {
@@ -145,6 +150,7 @@ int StringBuilder::getLength() {
 }
 
 char StringBuilder::charAt(int index) {
+    if (index < 0 || index > length) throw exception();
     return string[index];
 }
 
@@ -166,5 +172,6 @@ bool StringBuilder::equals(StringBuilder secondStr) {
 
     return true;
 }
+
 
 
