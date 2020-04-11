@@ -59,7 +59,12 @@ int main() {
     bool b = str == str.getLength();
     cout << b << "\n";
 
-    cout << str[1] << "\n";
+    cout << str[2] << "\n";
+
+    std::string st = "i'm string";
+
+    str = st;
+    cout << str;
 
     return 0;
 }
