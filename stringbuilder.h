@@ -22,9 +22,9 @@ public:
     char operator[] (int index);
     bool operator== (StringBuilder secondStr);
     bool operator== (int length);
-    void operator+= (StringBuilder secondStr);
-    void operator= (std::string newStr);
-    void operator= (StringBuilder newStr);
+    StringBuilder& operator+= (StringBuilder secondStr);
+    StringBuilder& operator= (std::string newStr);
+    StringBuilder& operator= (StringBuilder newStr);
 
     void setString(StringBuilder newStr);
     void setString(std::string newStr);
@@ -34,4 +34,3 @@ private:
     char* string;
     int length;
 };
-
