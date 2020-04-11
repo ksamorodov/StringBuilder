@@ -48,9 +48,18 @@ int main() {
     StringBuilder str2("oops");
 
     str += str2;
-    cout << str;
+    cout << str << "\n";
+
+    str = str + str2;
+    cout << str << "\n";
+
     str = str2;
-    cout << str;
+    cout << str << "\n";
+
+    bool b = str == str.getLength();
+    cout << b << "\n";
+
+    cout << str[1] << "\n";
 
     return 0;
 }
