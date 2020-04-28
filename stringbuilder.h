@@ -2,45 +2,38 @@
 #define STRING_H
 #include <iostream>
 #include <string>
+#include "vector.h"
 
 using namespace std;
 
-class StringBuilder  {
+class StringBuilder : public Vector {
 private:
-    char *string;
-    int length;
     void setString(char* newStr);
     void setString(std::string newStr);
 public:
     StringBuilder();
-    StringBuilder(const char *str);
-    StringBuilder(const StringBuilder &obj);
+    StringBuilder(const char* str);
 
     ~StringBuilder();
 
-    StringBuilder concatWith(StringBuilder newStr);
-    int getLength();
     char charAt(int index);
-    bool equals(StringBuilder secondStr);
 
-    char* toString();
-
-    StringBuilder operator + (const StringBuilder &obj) const;
-    StringBuilder operator + (const char c) const;
-    StringBuilder& operator+= (StringBuilder secondStr);
-    StringBuilder &operator = (const StringBuilder &obj);
+    StringBuilder& operator+ (char c);//
     StringBuilder& operator= (std::string newStr);
     StringBuilder& operator= (char* newStr);
-    char& operator[] (int index);
 
-    bool operator== (StringBuilder secondStr);
     bool operator== (int length);
 
 
-    friend istream &operator >> (istream &is, StringBuilder &obj);
+    friend istream &operator >> (istream &is, StringBuilder &obj);//
     friend ostream &operator << (ostream &os, StringBuilder &obj);
+    bool endsWith(StringBuilder& obj);
+    bool startsWith(StringBuilder& obj);
+    int indexOf(StringBuilder& obj);
 
+    StringBuilder* split (char separator);
 };
+
 
 #endif // STRING_H
 
