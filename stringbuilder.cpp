@@ -41,8 +41,17 @@ StringBuilder& StringBuilder::operator + (char c){
     return *this;
 }
 
-char StringBuilder::operator[](int index) {
-    return char(vector[index]);
+char& StringBuilder::operator[](int index) {
+    if (index >= size || index < 0) throw invalid_argument("invalid index");
+    int* intPtr = &vector[index];
+    char* charPtr = reinterpret_cast<char*>(intPtr);
+
+    return *charPtr;
+}
+
+StringBuilder& StringBuilder::concatWith(StringBuilder& obj) {
+    (*this) += obj;
+    return *this;
 }
 
 StringBuilder::operator string() {
@@ -205,6 +214,30 @@ int StringBuilder::indexOf(StringBuilder& obj) {
         return res;
     else
         return size;
+}
+
+bool StringBuilder::operator!= (int length) {
+    return size != length;
+}
+
+bool StringBuilder::operator>= (int length) {
+    return size >= length;
+}
+
+bool StringBuilder::operator<= (int length) {
+    return size <= length;
+}
+
+bool StringBuilder::operator> (int length) {
+    return size > length;
+}
+
+bool StringBuilder::operator< (int length) {
+    return size < length;
+}
+
+bool StringBuilder::operator!= (StringBuilder& obj) {
+    return !(*this == obj);
 }
 
 StringBuilder::~StringBuilder() {

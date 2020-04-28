@@ -4,11 +4,15 @@
 
 using namespace std;
 
-int main() {
-    StringBuilder str("Hello");
-    StringBuilder str2("Helloworldkirill");
+string vectorToString(Vector& obj) {
+    string str;
+    for (int i = 0; i < obj.getSize(); i++) {
+        str += char(obj[i]);
+    }
+    return str;
+}
 
-    string s = string(str);
-    cout << s;
+int main() {
+
     return 0;
 }
