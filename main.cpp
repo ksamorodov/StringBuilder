@@ -2,17 +2,15 @@
 #include "stringbuilder.h"
 #include "vector.h"
 
-
 using namespace std;
 
-
 int main() {
-    StringBuilder<char> a("hi");
-    StringBuilder<char> b(" World!!");
-    a += b;
-    for (int i = 0; i < a.getLength(); i++) {
-        cout << a[i];
-    }
+    StringBuilder str("Helloworldkirill");
+    StringBuilder str2("riljl");
 
+    while (1) {
+        cin >> str;
+        cout << str << endl;
+    }
     return 0;
 }
