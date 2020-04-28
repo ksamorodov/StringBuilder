@@ -5,12 +5,10 @@
 using namespace std;
 
 int main() {
-    StringBuilder str("Helloworldkirill");
-    StringBuilder str2("riljl");
+    StringBuilder str("Hello");
+    StringBuilder str2("Helloworldkirill");
 
-    while (1) {
-        cin >> str;
-        cout << str << endl;
-    }
+    string s = string(str);
+    cout << s;
     return 0;
 }

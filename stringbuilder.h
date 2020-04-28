@@ -13,16 +13,23 @@ private:
 public:
     StringBuilder();
     StringBuilder(const char* str);
-
+    StringBuilder(StringBuilder& obj);
     ~StringBuilder();
 
     char charAt(int index);
 
-    StringBuilder& operator+ (char c);//
     StringBuilder& operator= (std::string newStr);
+    StringBuilder& operator= (StringBuilder& obj);
     StringBuilder& operator= (char* newStr);
+    StringBuilder& operator+ (char c);
+    StringBuilder& operator+ (StringBuilder& obj);
+
+    operator string();
+
+    char operator[](int index);
 
     bool operator== (int length);
+    bool operator== (StringBuilder& obj);
 
 
     friend istream &operator >> (istream &is, StringBuilder &obj);//

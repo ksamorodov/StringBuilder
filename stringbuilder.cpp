@@ -19,6 +19,15 @@ StringBuilder::StringBuilder(const char* str)  {
     }
 }
 
+StringBuilder::StringBuilder(StringBuilder& obj) {
+    size = obj.size;
+    vector = new int[size];
+
+    for (int i = 0; i < size; i++) {
+        vector[i] = obj[i];
+    }
+}
+
 char StringBuilder::charAt(int index) {
 
     return char(this->getElement(index));
@@ -32,20 +41,40 @@ StringBuilder& StringBuilder::operator + (char c){
     return *this;
 }
 
+char StringBuilder::operator[](int index) {
+    return char(vector[index]);
+}
+
+StringBuilder::operator string() {
+    string obj;
+    for (int i = 0; i < size; i++) {
+        obj += char(vector[i]);
+    }
+    return obj;
+}
+
+StringBuilder& StringBuilder::operator= (StringBuilder& obj) {
+    if (!(*this == obj)){
+        delete[] vector;
+        size = obj.size;
+        vector = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            vector[i] = obj.charAt(i);
+        }
+    }
+
+    return *this;
+}
+
 istream &operator >> (istream &is, StringBuilder &str)  {
-    int ios_size = 0;
     is.sync();
     StringBuilder temp("");
 
     while (is.peek() != 10)  {
-        temp = temp + char(is.get());
-        ios_size++;
+        temp + char(is.get());
     }
-    cout << temp;
-    delete[] str.vector;
 
-    str.size = temp.size;
-    str.vector = new int[str.size];
     str = temp;
 
     return is;
@@ -63,6 +92,16 @@ bool StringBuilder::operator== (int length) {
     return size == length;
 }
 
+bool StringBuilder::operator== (StringBuilder& obj) {
+    if (size == obj.size) {
+        for (int i = 0; i < size; i++) {
+            if (charAt(i) != char(obj[i]))
+                return false;
+        }
+        return true;
+    }
+    else return false;
+}
 
 StringBuilder& StringBuilder::operator= (std::string newStr){
     setString(newStr);
@@ -82,11 +121,11 @@ void StringBuilder::setString(std::string newStr) {
 }
 
 void StringBuilder::setString(char* newStr) {
-    delete[] vector;
 
     int newLength = -1;
     while(newStr[++newLength]);
 
+    delete[] vector;
     vector = new int[newLength];
 
     for (int i = 0; i < newLength; i++) {
@@ -94,6 +133,11 @@ void StringBuilder::setString(char* newStr) {
     }
 
     size = newLength;
+}
+
+StringBuilder& StringBuilder::operator+ (StringBuilder& obj) {
+    (*this) += obj;
+    return *this;
 }
 
 StringBuilder& StringBuilder::operator= (char* newStr) {
@@ -164,5 +208,5 @@ int StringBuilder::indexOf(StringBuilder& obj) {
 }
 
 StringBuilder::~StringBuilder() {
-   delete[] vector;
+
 }

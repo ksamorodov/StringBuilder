@@ -23,8 +23,8 @@ Vector::Vector(Vector& obj) {
 Vector& Vector::addAll(Vector& obj) {
     Vector copy(*this);
     size += obj.size;
-    delete[] vector;
 
+    delete[] vector;
     vector = new int[size + obj.size];
 
     for (int i = 0; i < size; i++) {
@@ -51,12 +51,6 @@ Vector& Vector::create(int size) {
         vector[i] = 0;
     }
 
-    return *this;
-}
-
-Vector& Vector::clear() {
-    size = 0;
-    delete[] vector;
     return *this;
 }
 
@@ -95,8 +89,8 @@ void Vector::create(Vector& obj) {
 void Vector::add(int& data) {
     Vector copy(*this);
     size++;
-    delete[] vector;
 
+    delete[] vector;
     vector = new int[size];
 
     for (int i = 0; i < size - 1; i++) {
@@ -127,7 +121,9 @@ ostream& operator<< (ostream& os, Vector& obj) {
 }
 
 Vector& Vector::operator= (Vector& obj) {
-    this->create(obj);
+    if (!(obj == *this)) {
+        this->create(obj);
+    }
 
     return *this;
 }
@@ -156,8 +152,8 @@ Vector& Vector::operator- (int amount) {
     }
 
     Vector copy(*this);
-    delete[] vector;
 
+    delete[] vector;
     vector = new int[size - amount];
 
     for (int i = 0; i < size - amount; i++) {
@@ -175,8 +171,8 @@ Vector& Vector::operator-- (int data) {
     }
 
     Vector copy(*this);
-    delete[] vector;
 
+    delete[] vector;
     vector = new int[size - 1];
 
     for (int i = 0; i < size - 1; i++) {
@@ -194,8 +190,8 @@ Vector& Vector::operator-- () {
     }
 
     Vector copy(*this);
-    delete[] vector;
 
+    delete[] vector;
     vector = new int[size - 1];
 
     for (int i = 0; i < size - 1; i++) {
