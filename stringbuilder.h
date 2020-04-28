@@ -2,45 +2,54 @@
 #define STRING_H
 #include <iostream>
 #include <string>
+#include "vector.h"
 
 using namespace std;
 
-class StringBuilder  {
+class StringBuilder : public Vector {
 private:
-    char *string;
-    int length;
-    void setString(char* newStr);
     void setString(std::string newStr);
+    void setString(char* newStr);
 public:
+    StringBuilder(StringBuilder& obj);
+    StringBuilder(const char* str);
     StringBuilder();
-    StringBuilder(const char *str);
-    StringBuilder(const StringBuilder &obj);
 
-    ~StringBuilder();
+    StringBuilder& concatWith(StringBuilder& obj);
 
-    StringBuilder concatWith(StringBuilder newStr);
-    int getLength();
     char charAt(int index);
-    bool equals(StringBuilder secondStr);
 
-    char* toString();
-
-    StringBuilder operator + (const StringBuilder &obj) const;
-    StringBuilder operator + (const char c) const;
-    StringBuilder& operator+= (StringBuilder secondStr);
-    StringBuilder &operator = (const StringBuilder &obj);
+    StringBuilder& operator= (StringBuilder& obj);
+    StringBuilder& operator+ (StringBuilder& obj);
     StringBuilder& operator= (std::string newStr);
     StringBuilder& operator= (char* newStr);
-    char& operator[] (int index);
+    StringBuilder& operator+ (char c);
 
-    bool operator== (StringBuilder secondStr);
+    operator string();
+
+    char& operator[](int index);
+
+    bool operator== (StringBuilder& obj);
+    bool operator!= (StringBuilder& obj);
     bool operator== (int length);
+    bool operator!= (int length);
+    bool operator>= (int length);
+    bool operator<= (int length);
+    bool operator> (int length);
+    bool operator< (int length);
 
 
-    friend istream &operator >> (istream &is, StringBuilder &obj);
+    friend istream &operator >> (istream &is, StringBuilder &obj);//
     friend ostream &operator << (ostream &os, StringBuilder &obj);
+    bool startsWith(StringBuilder& obj);
+    bool endsWith(StringBuilder& obj);
+    int indexOf(StringBuilder& obj);
 
+    StringBuilder* split (char separator);
+
+    ~StringBuilder();
 };
+
 
 #endif // STRING_H
 
