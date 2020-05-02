@@ -17,7 +17,7 @@ public:
 
     StringBuilder& concatWith(StringBuilder& obj);
 
-    int get(int index);
+    int get(int index) override;
 
     StringBuilder& operator= (StringBuilder& obj);
     StringBuilder& operator+ (StringBuilder& obj);
