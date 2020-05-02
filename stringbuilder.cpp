@@ -28,9 +28,9 @@ StringBuilder::StringBuilder(StringBuilder& obj) {
     }
 }
 
-char StringBuilder::charAt(int index) {
+int StringBuilder::get(int index) {
 
-    return char(this->getElement(index));
+    return vector[index];
 }
 
 
@@ -69,7 +69,7 @@ StringBuilder& StringBuilder::operator= (StringBuilder& obj) {
         vector = new int[size];
 
         for (int i = 0; i < size; i++) {
-            vector[i] = obj.charAt(i);
+            vector[i] = obj.get(i);
         }
     }
 
@@ -81,7 +81,7 @@ istream &operator >> (istream &is, StringBuilder &str)  {
     StringBuilder temp("");
 
     while (is.peek() != 10)  {
-        temp + char(is.get());
+        temp = temp + char(is.get());
     }
 
     str = temp;
@@ -104,7 +104,7 @@ bool StringBuilder::operator== (int length) {
 bool StringBuilder::operator== (StringBuilder& obj) {
     if (size == obj.size) {
         for (int i = 0; i < size; i++) {
-            if (charAt(i) != char(obj[i]))
+            if (get(i) != char(obj[i]))
                 return false;
         }
         return true;

@@ -12,9 +12,9 @@ protected:
     int size;
 
 public:
-    Vector();
-    Vector(int size);
     Vector(Vector& obj);
+    Vector(int size);
+    Vector();
 
     Vector& addAll(Vector& obj);
     Vector& create(int size);
@@ -24,7 +24,7 @@ public:
     void create(Vector& obj);
     void add(int& data);
 
-    int& getElement(int index);
+    virtual int get(int index);
     int getSize();
 
     friend ostream& operator<< (ostream& os, Vector& );
@@ -40,9 +40,7 @@ public:
 
     int& operator[] (int index);
 
-    bool operator== (Vector& obj);
-
-    //StringBuilder& vectorToStringBuilder();
+    virtual bool operator== (Vector& obj);
 
     ~Vector();
 };
