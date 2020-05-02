@@ -17,7 +17,7 @@ public:
 
     StringBuilder& concatWith(StringBuilder& obj);
 
-    char charAt(int index);
+    int get(int index);
 
     StringBuilder& operator= (StringBuilder& obj);
     StringBuilder& operator+ (StringBuilder& obj);

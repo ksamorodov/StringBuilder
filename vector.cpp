@@ -100,7 +100,7 @@ void Vector::add(int& data) {
     vector[size - 1] = data;
 }
 
-int& Vector::getElement(int index) {
+int Vector::get(int index) {
     if (index < 0 || index > size) {
         throw invalid_argument("Index < 0 or > size");
     }
@@ -135,15 +135,17 @@ Vector& Vector::operator+= (Vector& obj) {
 }
 
 Vector& Vector::operator+ (Vector& obj) {
-    this->addAll(obj);
+    Vector copy(*this);
+    copy.addAll(obj);
 
-    return *this;
+    return copy;
 }
 
 Vector& Vector::operator+ (int& data) {
-    this->add(data);
+    Vector copy(*this);
+    copy.add(data);
 
-    return *this;
+    return copy;
 }
 
 Vector& Vector::operator- (int amount) {
@@ -204,6 +206,9 @@ Vector& Vector::operator-- () {
 }
 
 int& Vector::operator[] (int index) {
+    if (index < 0) {
+        throw invalid_argument("amount >= size");
+    }
     return vector[index];
 }
 
