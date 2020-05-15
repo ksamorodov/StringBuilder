@@ -1,5 +1,6 @@
 #ifndef STRING_H
 #define STRING_H
+#pragma once
 #include <iostream>
 #include <string>
 #include "vector.h"
@@ -44,8 +45,6 @@ public:
     bool startsWith(StringBuilder& obj);
     bool endsWith(StringBuilder& obj);
     int indexOf(StringBuilder& obj);
-
-    StringBuilder* split (char separator);
 
     ~StringBuilder();
 };
