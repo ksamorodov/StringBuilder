@@ -3,6 +3,7 @@
 #pragma once
 #include "stringbuilder.h"
 
+
 class LinkedList {
 public:
     struct Node {
@@ -13,31 +14,31 @@ public:
 
     LinkedList();//+
 
-    void addLast(StringBuilder& obj);//+
-    void add(StringBuilder& obj);//+
+    void addLast(StringBuilder& obj);
+    void add(StringBuilder& obj);
 
-    void removeFirst();//+
-    void removeLast(); //+
-    void remove();     //+
+    void removeFirst();
+    void removeLast();
+    void remove();
 
-    Node* getNext();   //+
-    Node* getPrev();   //+
-    Node* getHead();   //+
-    Node* getTail();   //+
-    Node* goHead();    //+
-    Node* goTail();    //+
-    Node* goNext();    //+
-    Node* goPrev();    //+
+    Node* getNext();
+    Node* getPrev();
+    Node* getHead();
+    Node* getTail();
+    Node* goHead();
+    Node* goTail();
+    Node* goNext();
+    Node* goPrev();
 
-    int getSize();     //+
+    int getSize();
 
-    StringBuilder& getFirst();  //+
-    StringBuilder& getLast();   //+
-    StringBuilder& getData();   //+
+    StringBuilder& getFirst();
+    StringBuilder& getLast();
+    StringBuilder& getData();
 
     StringBuilder& swap(int i, int j);
 
-    StringBuilder& operator[] (int index); //+
+    StringBuilder& operator[] (int index);
 
     ~LinkedList();
 
