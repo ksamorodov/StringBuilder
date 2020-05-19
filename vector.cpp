@@ -224,6 +224,26 @@ bool Vector::operator== (Vector& obj) {
     }
 }
 
+string Vector::toString() {
+    string str;
+
+    for (int i = 0; i < size; i++) {
+        str += (*this)[i];
+//        cout << get(i) << endl;
+    }
+
+    return str;
+}
+
+StringSerializable& Vector::parse(string str) {
+    int data;
+    for(int i = 0; i < str.length(); i++) {
+        data = str[i];
+        this->add(data);
+    }
+    return *this;
+}
+
 Vector::~Vector() {
     delete[] vector;
 }

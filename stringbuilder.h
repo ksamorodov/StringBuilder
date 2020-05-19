@@ -1,7 +1,7 @@
 #ifndef STRING_H
 #define STRING_H
+#pragma once
 #include <iostream>
-#include <string>
 #include "vector.h"
 
 using namespace std;
@@ -38,14 +38,14 @@ public:
     bool operator> (int length);
     bool operator< (int length);
 
+    string toString();
+    StringSerializable& parse(string str);
 
     friend istream &operator >> (istream &is, StringBuilder &obj);//
     friend ostream &operator << (ostream &os, StringBuilder &obj);
     bool startsWith(StringBuilder& obj);
     bool endsWith(StringBuilder& obj);
     int indexOf(StringBuilder& obj);
-
-    StringBuilder* split (char separator);
 
     ~StringBuilder();
 };

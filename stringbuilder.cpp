@@ -240,6 +240,25 @@ bool StringBuilder::operator!= (StringBuilder& obj) {
     return !(*this == obj);
 }
 
+string StringBuilder::toString() {
+    string str;
+
+    for (int i = 0; i < size; i++) {
+        str += (*this)[i];
+    }
+
+    return str;
+}
+
+StringSerializable& StringBuilder::parse(string str) {
+    int data;
+    for(int i = 0; i < str.length(); i++) {
+        data = str[i];
+        this->add(data);
+    }
+    return *this;
+}
+
 StringBuilder::~StringBuilder() {
 
 }

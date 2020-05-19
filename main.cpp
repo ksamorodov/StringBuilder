@@ -16,19 +16,17 @@ string vectorToString(Vector* obj) {
 }
 
 int main() {
-    Vector* vec = new Vector(5);
-    for (int i = 0; i < 5; i++) {
-         vec->operator[](i) = i + 48;
+    Vector v(10);
+
+    for (int i = 48; i < 58; i++) {
+        v[i - 48] = i;
     }
-
-    cout << vectorToString(vec) << endl;
-
-
-    StringBuilder* str = new StringBuilder("i'm string builder!");
-    cout << vectorToString(str) << endl;
-
-    vec = new StringBuilder("i'm vector and string builder");
-    cout << vectorToString(vec) << endl;
+    string str = v.toString();
+    Vector v2;
+    v2.parse(str);
+    str = " efgsdfg";
+    str = v2.toString();
+    cout << str;
 
     return 0;
 }
