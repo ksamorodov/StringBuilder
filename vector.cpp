@@ -224,6 +224,28 @@ bool Vector::operator== (Vector& obj) {
     }
 }
 
+
+// Created by Malova yana 19.05.2020
+string Vector::toString() {
+    string str;
+
+    for (int i = 0; i < size; i++) {
+        str += (*this)[i];
+    }
+
+    return str;
+}
+
+// Created by Malova yana 19.05.2020
+StringSerializable& Vector::parse(string str) {
+    int data;
+    for(int i = 0; i < str.length(); i++) {
+        data = str[i];
+        this->add(data);
+    }
+    return *this;
+}
+
 Vector::~Vector() {
     delete[] vector;
 }

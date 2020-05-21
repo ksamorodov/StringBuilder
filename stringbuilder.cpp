@@ -63,6 +63,9 @@ StringBuilder::operator string() {
 }
 
 StringBuilder& StringBuilder::operator= (StringBuilder& obj) {
+    if (&obj == nullptr) {
+        throw invalid_argument("nullptr in parametr");
+    }
     if (!(*this == obj)){
         delete[] vector;
         size = obj.size;
@@ -238,6 +241,47 @@ bool StringBuilder::operator< (int length) {
 
 bool StringBuilder::operator!= (StringBuilder& obj) {
     return !(*this == obj);
+}
+
+string StringBuilder::toString() {
+    string str;
+
+    for (int i = 0; i < size; i++) {
+        str += (*this)[i];
+    }
+
+    return str;
+}
+
+StringSerializable& StringBuilder::parse(string str) {
+    int data;
+    for(int i = 0; i < str.length(); i++) {
+        data = str[i];
+        this->add(data);
+    }
+    return *this;
+}
+
+StringBuilder* StringBuilder::split(char cut, int& count) {
+    int amount = 0;
+    for (int i = 0; i < size; i++) {
+        if ((*this)[i] == cut)
+            amount++;
+    }
+    amount++;
+    StringBuilder* arr = new StringBuilder[amount];
+    int j = 0;
+
+    for (int i = 0; i < amount; i++) {
+        if (j < size)
+            while((j < size) && (*this)[j] != cut) {
+                arr[i] = arr[i] + (*this)[j];
+                j++;
+            }
+        j++;
+    }
+    count = amount;
+    return arr;
 }
 
 StringBuilder::~StringBuilder() {
