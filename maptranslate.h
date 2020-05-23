@@ -13,7 +13,6 @@ public:
     StringBuilder& operator[] (StringBuilder& key);
     int getSize();
     MapTranslate& operator=(MapTranslate& obj);
-    StringBuilder& translateString(StringBuilder& obj);
     ~MapTranslate();
 };
 
