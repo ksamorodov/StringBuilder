@@ -144,7 +144,7 @@ StringBuilder& LinkedList::swap(int i, int j) {
     return jStr;
 }
 
-//LinkedList& LinkedList::operator= (LinkedList& obj) {
+LinkedList& LinkedList::operator= (LinkedList& obj) {
     while (head != nullptr) {
         tail = head->next;
         delete head;
