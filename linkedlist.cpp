@@ -145,19 +145,20 @@ StringBuilder& LinkedList::swap(int i, int j) {
 }
 
 //LinkedList& LinkedList::operator= (LinkedList& obj) {
-//    while (head != nullptr) {
-//        tail = head->next;
-//        delete head;
-//        head = tail;
-//    }
-//    size = 0;
-//    head = nullptr;
-//    tail = nullptr;
-//    data = nullptr;
-//    while (obj.getNext()) {
-//        add(obj.getData());
-//    }
-//}
+    while (head != nullptr) {
+        tail = head->next;
+        delete head;
+        head = tail;
+
+    }
+    size = 0;
+    head = nullptr;
+    tail = nullptr;
+    data = nullptr;
+    while (obj.getNext()) {
+        add(obj.getData());
+    }
+}
 
 StringBuilder& LinkedList::operator[] (int index) {
     goHead();
@@ -168,9 +169,9 @@ StringBuilder& LinkedList::operator[] (int index) {
 }
 
 LinkedList::~LinkedList() {
-//    while (head != nullptr) {
-//        tail = head->next;
-//        delete head;
-//        head = tail;
-//    }
+    while (head != nullptr) {
+        tail = head->next;
+        delete head;
+        head = tail;
+    }
 }
