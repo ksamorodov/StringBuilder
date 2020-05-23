@@ -33,18 +33,6 @@ MapTranslate& MapTranslate::operator=(MapTranslate& obj) {
     value = obj.value;
 }
 
-StringBuilder& MapTranslate::translateString(StringBuilder& obj) {
-    int amount;
-    StringBuilder* arr = obj.split(' ', amount);
-    StringBuilder transl;
-    for (int i = 0; i < amount; i++) {
-        arr[i] = (*this)[arr[i]];
-        transl = transl + arr[i];
-        transl = transl + ' ';
-    }
-    obj = transl;
-    return obj;
-}
 
 MapTranslate::~MapTranslate() {
 
