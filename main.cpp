@@ -1,8 +1,14 @@
 #include <iostream>
 #include "stringbuilder.h"
 #include "vector.h"
-#include "linkedlist.h"
-
+//#include "linkedlist.h"
+#include "maptranslate.h"
+#include "parser.h"
+#include <windows.h>
+#include <string>
+//#include <iostream>
+#include "dictionary.h"
+#include "consoleinterface.h"
 using namespace std;
 
 string vectorToString(Vector* obj) {
@@ -15,20 +21,8 @@ string vectorToString(Vector* obj) {
     return str;
 }
 
-int main() {
-    Vector* vec = new Vector(5);
-    for (int i = 0; i < 5; i++) {
-         vec->operator[](i) = i + 48;
-    }
-
-    cout << vectorToString(vec) << endl;
-
-
-    StringBuilder* str = new StringBuilder("i'm string builder!");
-    cout << vectorToString(str) << endl;
-
-    vec = new StringBuilder("i'm vector and string builder");
-    cout << vectorToString(vec) << endl;
-
+int main() {   
+    ConsoleInterface co;
+    co.show();
     return 0;
 }

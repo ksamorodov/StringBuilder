@@ -2,11 +2,14 @@
 #define VECTOR_H
 #include <iostream>
 #include <vector>
+#include <string>
+#include "stringserializable.h"
 
 using namespace std;
 
-
-class Vector {
+//Created by ksamorodov
+//Last changes 19.05.20
+class Vector :  public StringSerializable {
 protected:
     int* vector;
     int size;
@@ -39,6 +42,10 @@ public:
     Vector& operator-- ();
 
     int& operator[] (int index);
+
+    //created by Malova Yana
+    virtual string toString();
+    virtual StringSerializable& parse(string str);
 
     virtual bool operator== (Vector& obj);
 
